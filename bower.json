@@ -1,0 +1,17 @@
+{
+  "name": "websocket",
+  "description": "",
+  "main": "index.js",
+  "authors": [
+    "AmenallahMeftehh <meftah.amenallah@gmail.com>"
+  ],
+  "license": "ISC",
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
