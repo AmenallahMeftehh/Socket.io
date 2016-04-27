@@ -1,10 +1,11 @@
+var socket = io.connect('http://localhost', {
+    'forceNew': true
+});
+socket.on("messages", function (data) {
 
-var socket= io.connect('http://localhost',{'forceNew':true});
-socket.on("messages",function(data){
-   
-        console.info(data);
-    var html = data.map(function(data){
-        return(`
+    console.info(data);
+    var html = data.map(function (data) {
+        return (`
         <div class='name'>
             ${data.userName}
         </div>
@@ -15,3 +16,16 @@ ${data.content.text}</a>
     }).join(" ");
     document.getElementById("messages").innerHTML = html;
 });
+
+function addMessage(e) {
+    var payload = {
+        userName: document.getElementById("username").value
+        , content: {
+            text: document.getElementById("message").value
+            , link: document.getElementById("linkAddress").value
+        }
+        , ts: Date.now()
+    }
+    socket.emit("new-message", payload);
+    return false;
+}

@@ -40,6 +40,10 @@ app.use(express.static('app'));
 io.on('connection',function(socket){
 console.log("something connected to socket");
     socket.emit("messages",messages);
+    socket.on("new-message",function(data){
+        messages.push(data);
+        io.sockets.emit("messages",messages);
+    });
     
 })
 server.listen(80);
